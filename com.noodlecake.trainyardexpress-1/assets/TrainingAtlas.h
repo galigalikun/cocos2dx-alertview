@@ -1,0 +1,24 @@
+#import <Foundation/Foundation.h>
+
+//THIS IS A GENERATED FILE, DO NOT EDIT IT
+
+extern CGRect const TrainingAtlas_Training_Hand_0;
+extern CGRect const TrainingAtlas_Training_Hand_1;
+extern CGRect const TrainingAtlas_Training_Hand_2;
+extern CGRect const TrainingAtlas_Training_Hand_3;
+extern CGRect const TrainingAtlas_Training_Hand_4;
+extern CGRect const TrainingAtlas_Training_Hand_5;
+extern CGRect const TrainingAtlas_Training_Box;
+extern CGRect const TrainingAtlas_Training_Arrow;
+extern CGRect const TrainingAtlas_Training_NextStepButton;
+extern CGRect const TrainingAtlas_Training_NextStepButton_over;
+extern CGRect const TrainingAtlas_Training_WatchAgainButton;
+extern CGRect const TrainingAtlas_Training_WatchAgainButton_over;
+extern CGRect const TrainingAtlas_Training_SkipTutorialButton;
+extern CGRect const TrainingAtlas_Training_SkipTutorialButton_over;
+extern CGRect const TrainingAtlas_Training_NextPuzzleButton;
+extern CGRect const TrainingAtlas_Training_NextPuzzleButton_over;
+extern CGRect const TrainingAtlas_Training_NextTutorialButton;
+extern CGRect const TrainingAtlas_Training_NextTutorialButton_over;
+extern CGRect const TrainingAtlas_Training_BackToTutorialsButton;
+extern CGRect const TrainingAtlas_Training_BackToTutorialsButton_over;
