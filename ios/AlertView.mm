@@ -2,9 +2,9 @@
 
 enum AlertViewEventType : int {
     UNKNOWN  = 1 << 0,
-    NEGATIVE = 1 << 1,
-    POSITIVE = 1 << 2,
-    NEUTRAL  = 1 << 3,
+    POSITIVE = 1 << 1,
+    NEUTRAL = 1 << 2,
+    NEGATIVE  = 1 << 3,
 };
 
 
@@ -68,27 +68,29 @@ enum AlertViewEventType : int {
 -(void)alertView:(UIAlertView*)alertView
 clickedButtonAtIndex:(NSInteger)buttonIndex {
     //
-    auto resultCode = cocos2d::plugin::AlertView::EventType::NEGATIVE;
+    auto resultCode = cocos2d::plugin::AlertView::EventType::UNKOWN;
 
-    if(buttonIndex == 1) {
-        if((self.eventType & AlertViewEventType::NEGATIVE) == AlertViewEventType::NEGATIVE) {
-            
-        } else if((self.eventType & AlertViewEventType::POSITIVE) == AlertViewEventType::POSITIVE) {
-                resultCode = cocos2d::plugin::AlertView::EventType::POSITIVE;
-        } else if((self.eventType & AlertViewEventType::NEUTRAL) == AlertViewEventType::NEUTRAL) {
-        }
-    } else if(buttonIndex == 2) {
+    if(buttonIndex == 0) {
         if((self.eventType & AlertViewEventType::POSITIVE) == AlertViewEventType::POSITIVE) {
             resultCode = cocos2d::plugin::AlertView::EventType::POSITIVE;
         } else if((self.eventType & AlertViewEventType::NEUTRAL) == AlertViewEventType::NEUTRAL) {
             resultCode = cocos2d::plugin::AlertView::EventType::NEUTRAL;
+        } else if((self.eventType & AlertViewEventType::NEGATIVE) == AlertViewEventType::NEGATIVE) {
+            resultCode = cocos2d::plugin::AlertView::EventType::NEGATIVE;
         }
-    } else if(buttonIndex == 3) {
+            
+    } else if(buttonIndex == 1) {
         if((self.eventType & AlertViewEventType::NEUTRAL) == AlertViewEventType::NEUTRAL) {
             resultCode = cocos2d::plugin::AlertView::EventType::NEUTRAL;
+        } else if((self.eventType & AlertViewEventType::NEGATIVE) == AlertViewEventType::NEGATIVE) {
+            resultCode = cocos2d::plugin::AlertView::EventType::NEGATIVE;
+        }
+    } else if(buttonIndex == 2) {
+        if((self.eventType & AlertViewEventType::NEGATIVE) == AlertViewEventType::NEGATIVE) {
+            resultCode = cocos2d::plugin::AlertView::EventType::NEGATIVE;
         }
     }
-    cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(cocos2d::plugin::AlertView::NOTIFICATION,&resultCode);
+    cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(cocos2d::plugin::AlertView::NOTIFICATION(),&resultCode);
 
 }
 
@@ -107,9 +109,9 @@ namespace cocos2d { namespace plugin {
     
     void AlertView::show() {
         id alert = [[AlertViewIOS alloc] initWithTitle:this->getTitle() :this->getMessage()];
-        [alert setNegative:this->getNegative()];
         [alert setPositive:this->getPositive()];
         [alert setNeutral:this->getNeutral()];
+        [alert setNegative:this->getNegative()];
         [alert show]; // :[NSString stringWithUTF8String:this->getTitle().c_str()] :[NSString stringWithUTF8String:this->getMessage().c_str()] :[NSString stringWithUTF8String:this->getNegative().c_str()] :[NSString stringWithUTF8String:this->getPositive().c_str()] :[NSString stringWithUTF8String:this->getNeutral().c_str()]];
     }
     

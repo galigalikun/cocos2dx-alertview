@@ -8,12 +8,17 @@ namespace cocos2d { namespace plugin {
 class AlertView : public cocos2d::Ref {
 public:
     enum class EventType : int {
-        NEGATIVE = 0,
-        POSITIVE,
-        NEUTRAL,
+        UNKOWN = 0  << 0,
+        POSITIVE = 1 << 1,
+        NEUTRAL = 1 << 2,
+        NEGATIVE = 1 << 3,
     };
-    static constexpr char* CLASS_NAME = "org/cocos2dx/lib/Cocos2dxAlertView";
-    static constexpr char* NOTIFICATION = "AlertViewNotification";
+    static const std::string CLASS_NAME() {
+        return "org/cocos2dx/lib/Cocos2dxAlertView";
+    }
+    static const std::string NOTIFICATION() {
+        return "AlertViewNotification";
+    }
 
 public:
     CREATE_FUNC(AlertView);
